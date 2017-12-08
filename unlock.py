@@ -60,16 +60,14 @@ for root, dirs, files in os.walk(yourpath, topdown=False):
             os.system('rm '+dest+'-tag')
     for name in dirs:
         print(os.path.join(root, name))
-print 'finished validating all files'
 
 for root, dirs, files in os.walk(yourpath, topdown=False):
     for name in files:
         dest = os.path.join(root,name)
-        print dest[-4:]
         if (str(dest)[:-4] == '-tag'):
             continue
-
-        execname = 'python2.7 cbc-dec.py -k '+'aeskey'+ ' -i '+dest+' -o '+dest
-        os.system(execname)
+        else:
+            execname = 'python2.7 cbc-dec.py -k '+'aeskey'+ ' -i '+dest+' -o '+dest
+            os.system(execname)
     for name in dirs:
         print(os.path.join(root, name))
